@@ -1,0 +1,20 @@
+%%Initiate a Town Road
+laneWidth=2;
+laneNumber=1;
+roadLength1=100;
+roadLength2=200;
+
+s = drivingScenario;
+
+
+roadCenters1 = [0 0; roadLength1 0];
+roadCenters2 = [23 -roadLength2; 23 -150; 23 -50; 23 0; 23 25; 23 500
+; 0 1000];
+roadCenters3 = [530 -roadLength2; 530 roadLength2];
+
+
+road(s, roadCenters1, 'lanes', lanespec([laneNumber laneNumber]));
+road(s, roadCenters2, 'lanes', lanespec([laneNumber laneNumber]));
+road(s, roadCenters3, 'lanes', lanespec([laneNumber laneNumber]));
+
+plot(s,'RoadCenters','on');
