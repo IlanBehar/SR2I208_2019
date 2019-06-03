@@ -1,7 +1,7 @@
 %%Initiate a highway
 laneWidth=2;
 laneNumber=3;
-roadLength=100;
+roadLength=10000;
 
 s = drivingScenario;
 
