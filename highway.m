@@ -28,13 +28,17 @@ line=[line1 line2 line3 line4 line5 line6];
 % loop around the track four times
 
 for pos=position
+    direction=1;
     currentLine=line(1:2,i*2-1:i*2);
     speedVar=randi(speedRange)-speedRange/2;
     mySpeed=speed+speedVar;
+    if i>3
+        direction=-1;
+    end
     v = vehicle(s,'Position',[ pos currentLine(1) 0],'Velocity',[ 0 0 0],'Yaw',0);
-    i=mod(i,laneNumber*2)+1;
-    traj=[pos currentLine(1); roadLength*2 currentLine(1)];
+    traj=[pos currentLine(1); direction*roadLength*2 currentLine(1)];
     trajectory(v,traj(:,:), mySpeed);
+    i=mod(i,laneNumber*2)+1;
 end
 
 plot(s,'RoadCenters','on');
