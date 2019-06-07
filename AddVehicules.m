@@ -3,6 +3,7 @@ function [output] = AddVehicules(positions, line, speed, speedRange, s, roadLeng
 
 i=1;
 for pos=positions
+    position=pos+roadLength*1/10;
     direction=1;
     currentLine=line(1:2,i*2-1:i*2);
     speedVar=randi(speedRange)-speedRange/2;
@@ -10,8 +11,8 @@ for pos=positions
     if i>3
         direction=-1;
     end
-    v = vehicle(s,'Position',[ pos currentLine(1) 0],'Velocity',[ 0 0 0],'Yaw',0);
-    traj=[pos currentLine(1); direction*roadLength*2 currentLine(1)]; %*2 to allow more time for the simulation
+    v = vehicle(s,'Position',[ position currentLine(1) 0],'Velocity',[ 0 0 0],'Yaw',0);
+    traj=[position currentLine(1); direction*roadLength*2 currentLine(1)]; %*2 to allow more time for the simulation
     trajectory(v,traj(:,:), mySpeed);
     i=mod(i,laneNumber*2)+1;
 end

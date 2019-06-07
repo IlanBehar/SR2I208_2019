@@ -18,7 +18,7 @@ AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber);
 
 plot(s,'RoadCenters','on');
 s.SampleTime = 0.01;
-s.StopTime = 2;
+s.StopTime = 10;
 laneWidth=3.6;
 while advance(s)
   axis([roadLength*1/3 roadLength*2/3 -3*laneWidth 3*laneWidth]);
