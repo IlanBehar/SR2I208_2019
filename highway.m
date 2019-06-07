@@ -2,31 +2,17 @@
 
 %Data to set
 laneNumber=3;
-roadLength=100;%in meters
+roadLength=1000;%in meters
 speed=100/3.6;%km/h -> m/s
 speedRange=floor(60/3.6); %speed can go from speed-speedRange/2 to speed+speedRange/2
 carsPerSecond=5;
 
 
-laneWidth=3.6;
 s = drivingScenario;
 roadCenters = [0 0; roadLength 0];
 road(s, roadCenters, 'lanes', lanespec([laneNumber laneNumber]));
 position=GetCarsPosition(carsPerSecond, laneNumber,speed ,roadLength);
-
-d = laneWidth/2;
-roadOffset = [ d 0; d 0]';
-lane=[laneWidth laneWidth ; 0 0];  
-line=[];
-
-for i=-laneNumber: laneNumber-1
-    if i>=0
-        currentLine=roadCenters + roadOffset + i*lane;
-    else
-        currentLine=roadCenters - roadOffset + (i+1)*lane;
-    end
-    line=[line currentLine];
-end
+line=GetLines(laneNumber, roadCenters);
 
 
 i=1;
@@ -47,7 +33,8 @@ end
 plot(s,'RoadCenters','on');
 s.SampleTime = 0.01;
 s.StopTime = 2;
+laneWidth=3.6;
 while advance(s)
-  %axis([roadLength*1/3 roadLength*2/3 -3*laneWidth 3*laneWidth]);
+  axis([roadLength*1/3 roadLength*2/3 -3*laneWidth 3*laneWidth]);
   pause(0.001);
 end
