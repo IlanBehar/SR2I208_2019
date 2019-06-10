@@ -16,4 +16,7 @@ line=GetLines(laneNumber, roadCenters);
 cars=AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber);
 
 
-draw(s,cars);
+target=cars(1);
+attack=cars(2);
+
+draw(s, target, attack);

@@ -1,4 +1,4 @@
-function [] = draw(s, cars)
+function [] = draw(s, target, attack)
 %Draw : plot the scenario 
 
 hFigure = figure;
@@ -15,9 +15,6 @@ carBEP = birdsEyePlot('Parent',hAxes2);
 
 targetLanePlotter = laneBoundaryPlotter(carBEP);
 targetOutlinePlotter = outlinePlotter(carBEP);
-
-target=cars(1);
-
 attackTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','red','DisplayName','attack','VelocityScaling',.5);
 targetTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','blue','DisplayName','target','VelocityScaling',.5);
 plotTrack(targetTrackPlotter, [0 0]);
@@ -28,8 +25,7 @@ s.SampleTime = 0.01;
 s.StopTime = 2;
 
 while advance(s)
-  t = targetPoses(target);
-  plotTrack(attackTrackPlotter, t.Position, t.Velocity);
+  plotTrack(attackTrackPlotter, attack.Position-target.Position, attack.Velocity-target.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);
   [position, yaw, length, width, originOffset, color] = targetOutlines(target);
