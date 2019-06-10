@@ -16,18 +16,19 @@ carBEP = birdsEyePlot('Parent',hAxes2);
 targetLanePlotter = laneBoundaryPlotter(carBEP);
 targetOutlinePlotter = outlinePlotter(carBEP);
 
-plot(s,'RoadCenters','on','Parent',hAxes1);
-s.SampleTime = 0.01;
-s.StopTime = 2;
-
 target=cars(1);
 
 attackTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','red','DisplayName','attack','VelocityScaling',.5);
 targetTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','blue','DisplayName','target','VelocityScaling',.5);
 plotTrack(targetTrackPlotter, [0 0]);
 
+
+plot(s,'RoadCenters','on','Parent',hAxes1);
+s.SampleTime = 0.01;
+s.StopTime = 2;
+
 while advance(s)
-  t = targetPoses(target)
+  t = targetPoses(target);
   plotTrack(attackTrackPlotter, t.Position, t.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);
@@ -36,4 +37,5 @@ while advance(s)
 end
 
 end
+
 
