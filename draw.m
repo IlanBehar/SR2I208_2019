@@ -21,8 +21,7 @@ plotTrack(targetTrackPlotter, [0 0]);
 
 
 plot(s,'RoadCenters','on','Parent',hAxes1);
-s.SampleTime = 0.01;
-s.StopTime = 2;
+
 
 while advance(s)
   plotTrack(attackTrackPlotter, attack.Position-target.Position, attack.Velocity-target.Velocity);

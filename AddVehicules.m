@@ -14,7 +14,7 @@ for pos=positions
     end
     car = vehicle(s,'Position',[ pos currentLine(1) 0],'Velocity',[ 0 0 0],'Yaw',0);
     cars = [cars car];
-    traj=[position currentLine(1); direction*roadLength*2 currentLine(1)]; %*2 to allow more time for the simulation
+    traj=[position currentLine(1); direction*roadLength currentLine(1)];
     trajectory(car,traj(:,:), mySpeed);
     i=mod(i,laneNumber*2)+1;
 end

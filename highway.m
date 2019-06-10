@@ -18,5 +18,6 @@ cars=AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber)
 
 target=cars(1);
 attack=cars(2);
-
+s.SampleTime = 0.01;
+s.StopTime = 4;
 draw(s, target, attack);
