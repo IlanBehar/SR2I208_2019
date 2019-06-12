@@ -16,8 +16,14 @@ line=GetLines(laneNumber, roadCenters);
 cars=AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber);
 
 
-target=cars(1);
-attack=cars(2);
+%index = index of the target car
+A = int16(numel(cars));
+B = int16(2);
+index = idivide(A,B);
+target=cars(index);
+%attacker is the closest car until attacks are implemented
+attack=cars(index-1);
+
 s.SampleTime = 0.01;
 s.StopTime = 4;
 draw(s, target, attack);
