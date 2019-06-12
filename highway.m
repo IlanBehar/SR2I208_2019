@@ -41,7 +41,7 @@ for i=1:numel(cars)
     end
 end
 egoLanePlotter = laneBoundaryPlotter(CarBEP);
-plotTrack(otherCarsTrackPlotter(index), [0 0]);
+plotTrack(otherCarsTrackPlotter(index), cars(index).Position);
 egoOutlinePlotter = outlinePlotter(CarBEP);
 
 plot(s,'RoadCenters','on','Parent',hAxes1);
@@ -53,7 +53,6 @@ while advance(s)
   t = targetPoses(cars(index));
   for i = 1:numel(cars)
       if(i ~= index)
-          cars(i).Position
           plotTrack(otherCarsTrackPlotter(i), t.Position, t.Velocity);
       end
   end
