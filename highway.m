@@ -27,7 +27,7 @@ hAxes2 = axes('Parent',hPanel2);
 
 otherCarsTrackPlotter = [];
 % assign a bird's-eye plot in third axes.
-CarBEP = birdsEyePlot('Parent',hAxes2,'XLimits',[0 440],'YLimits',[-20 20]);
+CarBEP = birdsEyePlot('Parent',hAxes2,'XLimits',[-150 150],'YLimits',[-20 20]);
 %index = index de la voiture que l'on suit dans le birdsEyePlot
 A = int16(numel(cars));
 B = int16(2);
@@ -41,7 +41,7 @@ for i=1:numel(cars)
     end
 end
 egoLanePlotter = laneBoundaryPlotter(CarBEP);
-plotTrack(otherCarsTrackPlotter(index), cars(index).Position);
+plotTrack(otherCarsTrackPlotter(index), [0 0]);
 egoOutlinePlotter = outlinePlotter(CarBEP);
 
 plot(s,'RoadCenters','on','Parent',hAxes1);
@@ -50,12 +50,13 @@ s.StopTime = 2;
 
 while advance(s)
 
-  t = targetPoses(cars(index));
-  for i = 1:numel(cars)
-      if(i ~= index)
-          plotTrack(otherCarsTrackPlotter(i), t.Position, t.Velocity);
-      end
-  end
+  %t = targetPoses(cars(index));
+  %for i = 1:numel(cars)
+  %   if(i ~= index)
+  %        t = targetPoses(cars(i));
+  %        plotTrack(otherCarsTrackPlotter(i), t.Position, t.Velocity);
+  %    end
+  %end
   rbs = roadBoundaries(cars(index));
   plotLaneBoundary(egoLanePlotter, rbs);
   [position, yaw, length, width, originOffset, color] = targetOutlines(cars(index));
