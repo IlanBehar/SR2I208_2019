@@ -31,5 +31,14 @@ switch i
             position=[constA constB 0];
         end
     case 5
+         if t==0
+            constA=randi(roadLength);
+            constB=line(randi(size(line)));
+            position=[constA constB 0];
+        else
+            constA=attacker.Position(1);
+            constB=attacker.Position(2);
+            position=[constA constB 0];
+        end
 end
 
