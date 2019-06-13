@@ -1,8 +1,5 @@
-function [] = Draw(s, target)
+function [] = Draw(s, target, attacker, num_attack,line)
 %Draw : plot the scenario 
-
-attacker=Attack(s, 2,target);
-
 hFigure = figure;
 hFigure.Position(3) = 900;
 %% Scenario plot
@@ -31,6 +28,7 @@ chasePlot(target,'Parent', hAxes3);
 
 %% Draw The all
 while advance(s)
+  attacker.Position=Attack(s, num_attack,target, line);
   plotTrack(attackTrackPlotter, attacker.Position-target.Position, attacker.Velocity-target.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);

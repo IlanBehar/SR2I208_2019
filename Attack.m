@@ -1,14 +1,18 @@
-function [attacker] = Attack(s,i, target)
+function [position] = Attack(s,i, target, line)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-constA=100;
-constB=5;
-
 switch i
     case 1
-        attacker = vehicle(s,'Position',[ constA constB 0],'Velocity',[ 0 0 0],'Yaw',0);
+        constA=300;
+        constB=line(3);
+        position=[constA constB 0];
     case 2
-        attacker= vehicle(s,'Position',[ constA+target.Position(1) constB+target.Position(2) 0],'Velocity',[ 0 0 0],'Yaw',0);
-  
+        constA=50;
+        constB=0;
+        position=[constA+target.Position(1) constB+target.Position(2) 0];
+    case 3
+        A=40-randi(80);
+        B=10-randi(20);
+        position=[A+target.Position(1) B+target.Position(2) 0];
 end
 

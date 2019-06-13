@@ -12,7 +12,7 @@ for pos=positions
     if i>3
         direction=-1;
     end
-    car = vehicle(s,'Position',[ pos currentLine(1) 0],'Velocity',[ 0 0 0],'Yaw',0);
+    car = vehicle(s,'Position',[ pos currentLine(1) 0],'Velocity',[ mySpeed 0 0],'Yaw',0);
     cars = [cars car];
     traj=[position currentLine(1); direction*roadLength currentLine(1)];
     trajectory(car,traj(:,:), mySpeed);
