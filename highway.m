@@ -25,4 +25,4 @@ target=cars(index);
 
 s.SampleTime = 0.01;
 s.StopTime = 4;
-draw(s, target);
+Draw(s, target);
