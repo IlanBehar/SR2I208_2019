@@ -22,16 +22,11 @@ targetTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','blue','DisplayName',
 plotTrack(targetTrackPlotter, [0 0]);
 
 
-%% Sensor plot
-hPanel3 = uipanel(hFigure,'Units','Normalized','Position',[2/3 0 1/3 1],'Title','Sensor Plot');
+%% Chase plot
+hPanel3 = uipanel(hFigure,'Units','Normalized','Position',[2/3 0 1/3 1],'Title','Chase Plot');
 hAxes3 = axes('Parent',hPanel3);
-sensorBEP = birdsEyePlot('Parent',hAxes3,'Xlimits', [0 90], 'Ylimits', [-35 35]);
-caPlotter = coverageAreaPlotter(sensorBEP,'DisplayName','Radar detections');
-mountPosition = [1 0];
-range = 60;
-orientation = 0;
-fieldOfView = 35;
-plotCoverageArea(caPlotter,mountPosition,range,orientation,fieldOfView);
+chasePlot(target,'Parent', hAxes3);
+
 
 %% Draw The all
 while advance(s)
