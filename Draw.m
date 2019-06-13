@@ -1,7 +1,7 @@
 function [] = Draw(s, target)
 %Draw : plot the scenario 
 
-attacker=Attack(s);
+attacker=Attack(s, 2,target);
 
 hFigure = figure;
 hFigure.Position(3) = 900;
