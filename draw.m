@@ -1,5 +1,7 @@
-function [] = draw(s, target, attack)
+function [] = draw(s, target)
 %Draw : plot the scenario 
+
+attacker=attack(s);
 
 hFigure = figure;
 hFigure.Position(3) = 900;
@@ -12,7 +14,7 @@ plot(s,'RoadCenters','on','Parent',hAxes1);
 %% Track plot
 hPanel2 = uipanel(hFigure,'Units','Normalized','Position',[1/3 0 1/3 1],'Title','Track Plot');
 hAxes2 = axes('Parent',hPanel2);
-carBEP = birdsEyePlot('Parent',hAxes2, 'Xlimits', [-50 50], 'Ylimits', [-20 20]);
+carBEP = birdsEyePlot('Parent',hAxes2, 'Ylimits', [-20 20]);
 targetLanePlotter = laneBoundaryPlotter(carBEP);
 targetOutlinePlotter = outlinePlotter(carBEP);
 attackTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','red','DisplayName','attack','VelocityScaling',.5);
@@ -46,7 +48,7 @@ plotCoverageArea(cap(1), radarSensor.SensorLocation, radarSensor.MaxRange, 0, ra
 
 %% Draw The all
 while advance(s)
-  plotTrack(attackTrackPlotter, attack.Position-target.Position, attack.Velocity-target.Velocity);
+  plotTrack(attackTrackPlotter, attacker.Position-target.Position, attacker.Velocity-target.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);
   [position, yaw, length, width, originOffset, color] = targetOutlines(target);
