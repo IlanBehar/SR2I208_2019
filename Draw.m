@@ -8,6 +8,7 @@ hFigure.Position(3) = 900;
 %% Scenario plot
 hPanel1 = uipanel(hFigure,'Units','Normalized','Position',[0 0 1/3 1],'Title','Scenario Plot');
 hAxes1 = axes('Parent',hPanel1);
+xlim([-10 10]);
 plot(s,'RoadCenters','on','Parent',hAxes1);
 
 
