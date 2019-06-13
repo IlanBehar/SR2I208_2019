@@ -1,4 +1,4 @@
-function [] = draw(s, target)
+function [] = Draw(s, target)
 %Draw : plot the scenario 
 
 attacker=attack(s);
