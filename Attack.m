@@ -1,11 +1,17 @@
-function [position] = Attack(s,i, target, line, t, attacker)
+function [position] = Attack(s,i, target, line, t, attacker,roadLength)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 switch i
     case 1
-        constA=300;
-        constB=line(3);
-        position=[constA constB 0];
+        if t==0
+            constA=randi(roadLength);
+            constB=10-randi(20);
+            position=[constA constB 0];
+        else
+            constA=attacker.Position(1);
+            constB=attacker.Position(2);
+            position=[constA constB 0];
+        end
     case 2
         constA=50;
         constB=0;
@@ -24,5 +30,6 @@ switch i
             constB=attacker.Position(2);
             position=[constA constB 0];
         end
+    case 5
 end
 
