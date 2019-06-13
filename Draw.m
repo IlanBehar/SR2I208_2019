@@ -1,4 +1,4 @@
-function [] = Draw(s, target, attacker, num_attack,line, roadLength)
+function [] = Draw(s, target, attackerList, num_attack,line, roadLength, sibil)%sibil represente the number of attacker
 %Draw : plot the scenario 
 hFigure = figure;
 hFigure.Position(3) = 900;
@@ -15,7 +15,10 @@ hAxes2 = axes('Parent',hPanel2);
 carBEP = birdsEyePlot('Parent',hAxes2, 'Ylimits', [-20 20]);
 targetLanePlotter = laneBoundaryPlotter(carBEP);
 targetOutlinePlotter = outlinePlotter(carBEP);
-attackTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','red','DisplayName','attack','VelocityScaling',.5);
+listAttackTrackPlotter=[];
+for i= 1:sibil
+    listAttackTrackPlotter=[listAttackTrackPlotter trackPlotter(carBEP,'MarkerEdgeColor','red','DisplayName','attack','VelocityScaling',.5)];
+end
 targetTrackPlotter = trackPlotter(carBEP,'MarkerEdgeColor','blue','DisplayName','target','VelocityScaling',.5);
 plotTrack(targetTrackPlotter, [0 0]);
 
@@ -29,9 +32,12 @@ chasePlot(target,'Parent', hAxes3);
 %% Draw The all
 t=0;
 while advance(s)
-  attacker.Position=Attack(s, num_attack,target, line, t, attacker, roadLength);
+  for i= 1:sibil
+    attacker=attackerList(i);
+    attacker.Position=Attack(s, num_attack,target, line, t, attacker, roadLength);
+    plotTrack(listAttackTrackPlotter(i), attacker.Position-target.Position, attacker.Velocity-target.Velocity);
+  end
   t=1;
-  plotTrack(attackTrackPlotter, attacker.Position-target.Position, attacker.Velocity-target.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);
   [position, yaw, length, width, originOffset, color] = targetOutlines(target);

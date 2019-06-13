@@ -6,7 +6,8 @@ roadLength=400;%in meters
 speed=100/3.6;%km/h -> m/s
 speedRange=floor(60/3.6); %speed can go from speed-speedRange/2 to speed+speedRange/2
 carsPerSecond=5;
-num_attack=5;
+num_attack=3;
+sybil=20;
 
 s = drivingScenario;
 roadCenters = [0 0; roadLength 0];
@@ -21,8 +22,11 @@ A = int16(numel(cars));
 B = int16(2);
 index = idivide(A,B);
 target=cars(index);
-attacker = vehicle(s,'Position',[ 0 0 0],'Velocity',[ speed 0 0],'Yaw',0);
+attackerList=[];
+for i=1:sybil
+    attackerList =[attackerList vehicle(s,'Position',[ 0 0 0],'Velocity',[ speed 0 0],'Yaw',0)];
+end
 
 s.SampleTime = 0.01;
 s.StopTime = 4;
-Draw(s, target, attacker, num_attack,line,roadLength);
+Draw(s, target, attackerList, num_attack,line,roadLength,sybil);
