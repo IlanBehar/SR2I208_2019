@@ -27,8 +27,10 @@ chasePlot(target,'Parent', hAxes3);
 
 
 %% Draw The all
+t=0;
 while advance(s)
-  attacker.Position=Attack(s, num_attack,target, line);
+  attacker.Position=Attack(s, num_attack,target, line, t, attacker);
+  t=1;
   plotTrack(attackTrackPlotter, attacker.Position-target.Position, attacker.Velocity-target.Velocity);
   rbs = roadBoundaries(target);
   plotLaneBoundary(targetLanePlotter, rbs);

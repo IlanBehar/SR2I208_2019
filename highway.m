@@ -6,7 +6,7 @@ roadLength=400;%in meters
 speed=100/3.6;%km/h -> m/s
 speedRange=floor(60/3.6); %speed can go from speed-speedRange/2 to speed+speedRange/2
 carsPerSecond=5;
-num_attack=3;
+num_attack=4;
 
 s = drivingScenario;
 roadCenters = [0 0; roadLength 0];
