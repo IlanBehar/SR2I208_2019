@@ -23,7 +23,7 @@ switch i
     case 4
         if t==0
             constA=40-randi(80);
-            constB=10-randi(20);
+            constB=25-randi(50);
             position=[constA+target.Position(1) constB+target.Position(2) 0];
         else
             constA=attacker.Position(1);
@@ -33,8 +33,19 @@ switch i
     case 5
          if t==0
             constA=randi(roadLength);
-            constB=line(randi(size(line)));
+            constB=line(2*randi(size(line)/2)+1);
             position=[constA constB 0];
+        else
+            constA=attacker.Position(1);
+            constB=attacker.Position(2);
+            position=[constA constB 0];
+         end
+    %case 6 looks to be the same as case 2
+    case 7
+        if t==0
+            constA=40-randi(80);
+            constB=line(2*randi(size(line)/2)+1);
+            position=[constA+target.Position(1) constB 0];
         else
             constA=attacker.Position(1);
             constB=attacker.Position(2);
