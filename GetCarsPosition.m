@@ -1,6 +1,6 @@
 function [output] = GetCarsPosition(carPerSecond, laneNumber, speed, roadLength)
 %Set the number of car on the road
-roadLength=roadLength-roadLength*2.5/10;
+delta=roadLength*3/10;
 carsPerLanePerSecond=carPerSecond/laneNumber;
-cars=[1:speed/carsPerLanePerSecond:roadLength];
+cars=[delta/2:speed/carsPerLanePerSecond:roadLength-delta];
 output=cars;

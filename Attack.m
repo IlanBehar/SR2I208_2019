@@ -1,7 +1,7 @@
-function [position] = Attack(s,i, target, line, t, attacker,roadLength)
+function [position] = Attack(s,num_attack, target, line, t, attacker,roadLength)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-switch i
+switch num_attack
     case 1
         if t==0
             constA=randi(roadLength);
