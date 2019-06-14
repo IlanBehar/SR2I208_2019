@@ -1,6 +1,6 @@
 function [] = Draw(s, target, attackerList, num_attack,line, roadLength, sibil)%sibil represente the number of attacker
 %Draw : plot the scenario 
-hFigure = figure;
+hFigure = figure('units','normalized','outerposition',[0 0 1 1]);
 hFigure.Position(3) = 900;
 %% Scenario plot
 hPanel1 = uipanel(hFigure,'Units','Normalized','Position',[0 0 1/3 1],'Title','Scenario Plot');
