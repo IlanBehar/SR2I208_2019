@@ -52,7 +52,7 @@ switch num_attack
             position=[constA constB 0];
         end
     case 9
-        Vmax=30/3.6; %maximal variation
+        Vmax=30/3.s6; %maximal variation
         if(attacker.Velocity(1)<Vmax)
             delta=1;
         else
@@ -61,5 +61,10 @@ switch num_attack
         traj=[attacker.Position(1) attacker.Position(2); roadLength attacker.Position(2)];
         trajectory(attacker,traj(:,:), attacker.Velocity(1)+delta);
         position=attacker.Position;
+    case 10
+        jump=10; %distance the attacker will "jump"
+        position=[jump+attacker.Position(1) attacker.Position(2) 0];
+        traj=[attacker.Position(1) attacker.Position(2); roadLength attacker.Position(2)];
+        trajectory(attacker,traj(:,:), attacker.Velocity(1)+delta);
 end
 
