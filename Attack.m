@@ -70,5 +70,9 @@ switch num_attack
         angleSnap=20;
         position=[A+target.Position(1) B+target.Position(2) 0];
         attacker.Yaw=attacker.Yaw+angleSnap;
+    case 12
+        A=1;
+        B=1;
+        position=[A+target.Position(1) B+target.Position(2) 0];
 end
 
