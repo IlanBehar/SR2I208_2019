@@ -64,7 +64,5 @@ switch num_attack
     case 10
         jump=10; %distance the attacker will "jump"
         position=[jump+attacker.Position(1) attacker.Position(2) 0];
-        traj=[attacker.Position(1) attacker.Position(2); roadLength attacker.Position(2)];
-        trajectory(attacker,traj(:,:), attacker.Velocity(1)+delta);
 end
 
