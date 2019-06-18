@@ -51,5 +51,15 @@ switch num_attack
             constB=attacker.Position(2);
             position=[constA constB 0];
         end
+    case 9
+        Vmax=30/3.6; %maximal variation
+        if(attacker.Velocity(1)<Vmax)
+            delta=1;
+        else
+            delta=(1-2*(randi(2)-1))*Vmax;
+        end
+        traj=[attacker.Position(1) attacker.Position(2); roadLength attacker.Position(2)];
+        trajectory(attacker,traj(:,:), attacker.Velocity(1)+delta);
+        position=attacker.Position;
 end
 
