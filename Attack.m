@@ -52,7 +52,7 @@ switch num_attack
             position=[constA constB 0];
         end
     case 9
-        Vmax=30/3.s6; %maximal variation
+        Vmax=30/3.6; %maximal variation
         if(attacker.Velocity(1)<Vmax)
             delta=1;
         else
