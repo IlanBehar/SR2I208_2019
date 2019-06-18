@@ -31,18 +31,30 @@ chasePlot(target,'Parent', hAxes3);
 
 %% Draw The all
 t=0;
-while advance(s)
-  for i= 1:sibil
-    attacker=attackerList(i);
-    attacker.Position=Attack(s, num_attack,target, line, t, attacker, roadLength);
-    plotTrack(listAttackTrackPlotter(i), attacker.Position-target.Position, attacker.Velocity-target.Velocity);
-  end
-  t=1;
-  rbs = roadBoundaries(target);
-  plotLaneBoundary(targetLanePlotter, rbs);
-  [position, yaw, length, width, originOffset, color] = targetOutlines(target);
-  plotOutline(targetOutlinePlotter, position, yaw, length, width, 'OriginOffset', originOffset, 'Color', color);
-end
+if(i<9)
+    while advance(s)
+      for i= 1:sibil
+        attacker=attackerList(i);
+        attacker.Position=Attack(s, num_attack,target, line, t, attacker, roadLength);
+        plotTrack(listAttackTrackPlotter(i), attacker.Position-target.Position, attacker.Velocity-target.Velocity);
+      end
+      t=1;
+      rbs = roadBoundaries(target);
+      plotLaneBoundary(targetLanePlotter, rbs);
+      [position, yaw, length, width, originOffset, color] = targetOutlines(target);
+      plotOutline(targetOutlinePlotter, position, yaw, length, width, 'OriginOffset', originOffset, 'Color', color);
+    end
+else
+     while advance(s)
+     attacker=attackerList(1);
+     plotTrack(listAttackTrackPlotter(1), attacker.Position-target.Position, attacker.Velocity-target.Velocity);
+     Attack(s, num_attack,target, line, t, attacker, roadLength);
+     t=1;
+     rbs = roadBoundaries(target);
+     plotLaneBoundary(targetLanePlotter, rbs);
+     [position, yaw, length, width, originOffset, color] = targetOutlines(target);
+     plotOutline(targetOutlinePlotter, position, yaw, length, width, 'OriginOffset', originOffset, 'Color', color);
+    end
 
 end
 
