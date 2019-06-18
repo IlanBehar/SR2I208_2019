@@ -64,5 +64,11 @@ switch num_attack
     case 10
         jump=10; %distance the attacker will "jump"
         position=[jump+attacker.Position(1) attacker.Position(2) 0];
+    case 11
+        A=50;
+        B=0;
+        angleSnap=20;
+        position=[A+target.Position(1) B+target.Position(2) 0];
+        attacker.Yaw=attacker.Yaw+angleSnap;
 end
 
