@@ -31,10 +31,12 @@ chasePlot(target,'Parent', hAxes3);
 
 %% Draw The all
 t=0;
+a=0;
+b=0;
 while advance(s)
     for i= 1:sibil
         attacker=attackerList(i);
-        attacker.Position=Attack(s, num_attack,target, line, t, attacker, roadLength);
+        [attacker.Position,a,b]=Attack(s, num_attack,target, line, t, attacker, roadLength,a,b);
         plotTrack(listAttackTrackPlotter(i), attacker.Position-target.Position, attacker.Velocity-target.Velocity);
      end
      t=1;

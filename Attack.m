@@ -1,4 +1,4 @@
-function [position] = Attack(s,num_attack, target, line, t, attacker,roadLength)
+function [position, a,b] = Attack(s,num_attack, target, line, t, attacker,roadLength,a,b)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 switch num_attack
@@ -8,13 +8,11 @@ switch num_attack
             constB=10-randi(20);
             position=[constA constB 0];
         else
-            constA=attacker.Position(1);
-            constB=attacker.Position(2);
-            position=[constA constB 0];
+            position=attacker.Position;
         end
     case 2
         constA=50;
-        constB=0;
+        constB=8;
         position=[constA+target.Position(1) constB+target.Position(2) 0];
     case 3
         A=40-randi(80);
@@ -24,11 +22,11 @@ switch num_attack
         if t==0
             constA=40-randi(80);
             constB=25-randi(50);
+            a=constA;
+            b=constB;
             position=[constA+target.Position(1) constB+target.Position(2) 0];
         else
-            constA=attacker.Position(1);
-            constB=attacker.Position(2);
-            position=[constA constB 0];
+            position=[a+target.Position(1) b+target.Position(2) 0];
         end
     case 5
          if t==0
@@ -40,16 +38,19 @@ switch num_attack
             constB=attacker.Position(2);
             position=[constA constB 0];
          end
-    %case 6 looks to be the same as case 2
+    case 6 
+        constA=50;
+        constB=0;
+        position=[constA+target.Position(1) constB+target.Position(2) 0];
     case 7
         if t==0
             constA=40-randi(80);
             constB=line(2*randi(size(line)/2)+1);
+            a=constA;
+            b=constB;
             position=[constA+target.Position(1) constB 0];
         else
-            constA=attacker.Position(1);
-            constB=attacker.Position(2);
-            position=[constA constB 0];
+            position=[a+target.Position(1) b 0];
         end
     case 9
         Vmax=30/3.6; %maximal variation
