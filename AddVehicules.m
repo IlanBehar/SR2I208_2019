@@ -1,4 +1,4 @@
-function [output] = AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber)
+function [cars] = AddVehicules(positions, line, speed, speedRange, s, roadLength, laneNumber)
 %Add the vehicules in the scenario
 
 i=1;
@@ -18,5 +18,4 @@ for pos=positions
     trajectory(car,traj(:,:), mySpeed);
     i=mod(i,laneNumber*2)+1;
 end
-output=cars;
 end

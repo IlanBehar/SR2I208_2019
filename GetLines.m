@@ -1,4 +1,4 @@
-function [output] = GetLines(laneNumber, roadCenters)
+function [line] = GetLines(laneNumber, roadCenters)
 %return the lane used by the cars
 laneWidth=3.6;
 d = laneWidth/2;
@@ -13,7 +13,6 @@ for i=-laneNumber: laneNumber-1
     end
     line=[line currentLine];
 end
-output=line;
 
 end
 
