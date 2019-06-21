@@ -6,8 +6,8 @@ roadLength=400;%in meters
 speed=100/3.6;%km/h -> m/s
 speedRange=floor(60/3.6); %speed can go from speed-speedRange/2 to speed+speedRange/2
 carsPerSecond=5;
-num_attack=1;
-sybil=100;
+num_attack=12;
+sybil=1;
 
 s = drivingScenario;
 roadCenters = [0 0; roadLength 0];
@@ -28,5 +28,5 @@ for i=1:sybil
 end
 
 s.SampleTime = 0.05;
-s.StopTime = 10;
+s.StopTime = 1;
 Draw(s, target, attackerList, num_attack,line,roadLength,sybil);
