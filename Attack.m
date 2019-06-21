@@ -20,8 +20,8 @@ switch num_attack
         position=[A+target.Position(1) B+target.Position(2) 0];
     case 4
         if t==0
-            constA=40-randi(80);
-            constB=25-randi(50);
+            constA=randi(2*roadLength);
+            constB=20-randi(40);
             a=constA;
             b=constB;
             position=[constA+target.Position(1) constB+target.Position(2) 0];
