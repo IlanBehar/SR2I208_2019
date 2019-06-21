@@ -4,8 +4,8 @@ function [position, a,b] = Attack(s,num_attack, target, line, t, attacker,roadLe
 switch num_attack
     case 1
         if t==0
-            constA=randi(roadLength);
-            constB=10-randi(20);
+            constA=randi(2*roadLength);
+            constB=20-randi(40);
             position=[constA constB 0];
         else
             position=attacker.Position;
